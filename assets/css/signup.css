@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8FAFC;
+}
+
+
+.signup-container{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 1.5rem rgb(182, 179, 179);
+}
+
+.signup-container img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    outline: 1px solid #0c5930;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+
+.signup-container h1{
+    color: #0c5930;
+    text-align: center;
+}
+
+.signup-container p{
+    color: rgb(80, 77, 77);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+label{
+    display: block;
+    color: #0c5930;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+input{
+    display: block;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #818181;
+    margin-bottom: 1rem;
+}
+
+input:focus{
+    outline: 2px solid #48b37a;
+    border: none;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+button{
+    background-color: #0c5930;
+    width: 100%;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+button:hover{
+    opacity: 0.9;
+}
+
+.already{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.already li{
+    list-style: none;
+}
+
+.already li a{
+    text-decoration: none;
+    color: #0c5930;
+    font-weight: bold;
+}
+
+.back{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.back li{
+    list-style: none;
+}
+
+.back li a{
+    text-decoration: none;
+    color: #0c5930;
+    font-weight: bold;
+}
+
+li a:hover{
+    color: #0c5930;
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width:786px){
+    .signup-container{
+        width: 80%;
+        margin-top: 3rem;
+    }
+}
