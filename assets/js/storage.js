@@ -112,6 +112,11 @@ export function updateBalance(balance,type){
         return user;
     })
 
+    if(updateCur[0].balance<0){
+        alert('You do not have enough balance');
+        return false;
+    }
+
     localStorage.setItem('users',JSON.stringify(updateData));
     localStorage.setItem('currentUser',JSON.stringify(updateCur));
     return true;

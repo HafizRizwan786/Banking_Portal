@@ -74,7 +74,7 @@ document.querySelectorAll('#nav-menu a').forEach(link => {
 
 // Handling the profile image pick functionality and update the local storage by calling UpdateImage function
 const imgInput=document.getElementById('imgInput');
-const profileImg=document.getElementById('profileImg');
+// const profileImg=document.getElementById('profileImg'); already declare above
 const profileIcon=document.getElementById('profileIcon');
 
 profileImg.addEventListener('click',()=>{
@@ -174,7 +174,7 @@ function history(){
 // and updating the user balance by calling UpdateBalance function
 // and showing the transaction history by calling the history function
 
-function UpdateData(){
+function UpdateData(event){
 
     let am = Number(amount.value);
     let desc = des.value? des.value : "";
@@ -188,6 +188,7 @@ function UpdateData(){
     }
     else{
         alert('Select the transaction type');
+        event.preventDefault();
         return;
     }
 
@@ -213,9 +214,14 @@ function UpdateData(){
         'time':time
     }
 
-    storeHistory(transaction);
-    updateBalance(am,type);
-    history();
+
+    if(updateBalance(am,type)){
+        storeHistory(transaction);
+        history();
+    }
+    else{
+        event.preventDefault();
+    }
 }
 
 
