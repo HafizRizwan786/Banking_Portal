@@ -274,9 +274,15 @@ th{
 }
 
 
-tbody tr:first-child:not(:only-child) {
+/* tbody tr:first-child:not(:only-child) {
+    border-bottom: 1px solid rgb(186, 186, 186);
+} */
+
+
+tbody tr{
     border-bottom: 1px solid rgb(186, 186, 186);
 }
+
 
 td{
     color: rgb(88, 87, 87);

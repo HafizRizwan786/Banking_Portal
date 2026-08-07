@@ -1,15 +1,19 @@
 import { UpdateImage, storeHistory, updateBalance } from "./storage.js";
 
-// Adding the username and email to the dashboard
-function executeInfo() {
-    const userName = document.getElementById('name');
-    const userEmail = document.getElementById('email');
-    const welcome = document.getElementById('welcome');
-    const tbalance= document.getElementById('tbalance');
-    const tcredit = document.getElementById('tcredit');
-    const tdebit = document.getElementById('tdebit');
-    const profileImg=document.getElementById('profileImg');
 
+// Updating the Dashboard page when user make changes in balance or image or for displaying the user info when login
+
+const userName = document.getElementById('name');
+const userEmail = document.getElementById('email');
+const welcome = document.getElementById('welcome');
+const tbalance= document.getElementById('tbalance');
+const tcredit = document.getElementById('tcredit');
+const tdebit = document.getElementById('tdebit');
+const profileImg=document.getElementById('profileImg');
+
+
+function executeInfo() {
+    
     const savedUser = localStorage.getItem('currentUser');
     if (!savedUser) {
         window.location.href = '../../index.html';
@@ -36,6 +40,8 @@ document.addEventListener('DOMContentLoaded', executeInfo);
 
 
 
+
+
 // Logout functionality
 const logout=document.getElementById('logout');
 
@@ -45,6 +51,7 @@ function handleLogout() {
 }
 
 logout.addEventListener('click',handleLogout);
+
 
 
 
@@ -63,7 +70,9 @@ document.querySelectorAll('#nav-menu a').forEach(link => {
 });
 
 
-// Add Profile image
+
+
+// Handling the profile image pick functionality and update the local storage by calling UpdateImage function
 const imgInput=document.getElementById('imgInput');
 const profileImg=document.getElementById('profileImg');
 const profileIcon=document.getElementById('profileIcon');
@@ -95,7 +104,9 @@ imgInput.addEventListener('change',(event)=>{
 
 
 
-// Handling the transaction button
+
+
+// Handling the transaction button on the dashboard and closing buttons of the pop up
 const transBtn=document.getElementById('transBtn');
 const popup=document.getElementById('popup');
 
@@ -121,6 +132,7 @@ cross.addEventListener('click',(event)=>{
 
 
 
+
 // Handling the balance of the user
 const save = document.getElementById('save');
 const amount= document.getElementById('amount');
@@ -131,6 +143,7 @@ const debit = document.getElementById('debit');
 const body= document.getElementById('body');
 
 
+// For displaying the transaction history of the user in the table
 function history(){
     const existingData = localStorage.getItem('transactions');
     const hist = JSON.parse(existingData);
@@ -141,10 +154,10 @@ function history(){
     body.innerHTML="";
 
     for(let h of hist){
-        if(h.email===curr.email){
+        if(h.userId===curr[0].id){
             body.innerHTML += `
                 <tr>
-                    <td>${h.Date}</td>
+                    <td>${h.date}</td>
                     <td>${h.time}</td>
                     <td>${h.description}</td>
                     <td>${h.type}</td>
@@ -157,6 +170,10 @@ function history(){
 
 
 
+// Getting the data of transaction that user make and store the history by calling the storehistory function
+// and updating the user balance by calling UpdateBalance function
+// and showing the transaction history by calling the history function
+
 function UpdateData(){
 
     let am = Number(amount.value);
@@ -168,7 +185,6 @@ function UpdateData(){
     }
     else if(debit.checked){
         type='debit';
-        am=-am;
     }
     else{
         alert('Select the transaction type');
@@ -184,7 +200,7 @@ function UpdateData(){
     const time = new Date().toLocaleTimeString();
 
     const existingData = localStorage.getItem('transactions');
-    const trans = existingData? JSON.parse(existingData) : [];
+    const trans = JSON.parse(existingData) || [];
     let id = trans.length+1;
 
     const transaction = {

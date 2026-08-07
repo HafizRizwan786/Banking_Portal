@@ -1,6 +1,7 @@
 // localStorage.removeItem('users');
 // localStorage.removeItem('transactions');
 
+// For storing the newly generated User data (Sign Up)
 export function storeData(user) {
 
     const existingData = localStorage.getItem('users');
@@ -21,6 +22,7 @@ export function storeData(user) {
 
 
 
+// Validate the User for Login
 export function validateUser(email,password){
     const existingData = localStorage.getItem('users');
     const data = JSON.parse(existingData) || [];
@@ -37,7 +39,7 @@ export function validateUser(email,password){
 
 
 
-
+// For saving the new selected image by the user
 export function UpdateImage(img){
     const existData = localStorage.getItem('users');
     const data = JSON.parse(existData);
@@ -64,6 +66,7 @@ export function UpdateImage(img){
 
 
 
+// For storing the transaction history
 export function storeHistory(transaction){
     const existingData = localStorage.getItem('transactions');
     const data =JSON.parse(existingData) || [];
@@ -74,6 +77,7 @@ export function storeHistory(transaction){
 
 
 
+// For updating the Balance (Credit or Debit) of the user in the user storage when user make transaction
 export function updateBalance(balance,type){
     const cur = localStorage.getItem('currentUser');
     const dt = JSON.parse(cur);
@@ -83,25 +87,26 @@ export function updateBalance(balance,type){
 
     const updateData = data.map((user)=>{
         if(user.email === dt[0].email){
-            user.balance = Number(user.balance) + Number(balance);
-            
             if(type==='credit'){
+                user.balance = Number(user.balance) + Number(balance);
                 user.totalCredit = Number(user.totalCredit) + Number(balance);
             }
             else{
-                user.totalDebit = Number(user.totalDebit) - Number(balance);
+                user.balance = Number(user.balance) - Number(balance);
+                user.totalDebit = Number(user.totalDebit) + Number(balance);
             }
         }
         return user;
     })
     
     const updateCur = dt.map((user)=>{
-        user.balance = Number(user.balance) + Number(balance);
         if(type==='credit'){
+            user.balance = Number(user.balance) + Number(balance);
             user.totalCredit = Number(user.totalCredit) + Number(balance);
         }
         else{
-            user.totalDebit = Number(user.totalDebit) - Number(balance);
+            user.balance = Number(user.balance) - Number(balance);
+            user.totalDebit = Number(user.totalDebit) + Number(balance);
         }
 
         return user;
