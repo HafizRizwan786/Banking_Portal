@@ -469,13 +469,14 @@ main{
 
     /* Hero Section Responsive */
     .hero {
-        height: 100%;
+        height: auto;
         padding-top: 70px;
     }
 
     .hero-content {
         height: auto;
         padding: 4rem 1rem;
+        margin-bottom: 1rem;
     }
 
     .hero-content h1 {
