@@ -469,7 +469,7 @@ main{
 
     /* Hero Section Responsive */
     .hero {
-        height: auto;
+        height: 100%;
         padding-top: 70px;
     }
 
