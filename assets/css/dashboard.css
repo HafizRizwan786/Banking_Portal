@@ -48,12 +48,13 @@ body{
     border-radius: 50%;
     outline: 2px solid rgb(101, 174, 108);
     margin-bottom: 1rem;
+    object-fit: cover;
 }
 
 .info button{
     position: absolute;
-    left: 8.5rem;
-    top: 10rem;
+    left: 8.4rem;
+    top: 11rem;
     background: transparent;
     border: none;
 }

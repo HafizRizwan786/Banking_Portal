@@ -28,18 +28,19 @@
             <nav id="nav-menu">
                 <!-- Mobile Dropdown me user info sab se upar dikhegi -->
                 <div class="info">
-                    <img src="../images/default_user.png" alt="user">
-                    <button><i class="fa-solid fa-circle-plus" style="color: rgb(101, 174, 108);"></i></button>
-                    <h3>Hafiz Rizwan</h3>
-                    <p>infoBank@gmail.com</p>
+                    <input type="file" id="imgInput" accept="image/*" hidden>
+                    <img id="profileImg" src="../images/default_user.png" alt="user">
+                    <button><i id="profileIcon" class="fa-solid fa-circle-plus" style="color: rgb(101, 174, 108);"></i></button>
+                    <h3 id="name">Hafiz Rizwan</h3>
+                    <p id="email">infoBank@gmail.com</p>
                 </div>
 
                 <ul>
                     <li><a href="#loan"><i class="fa-solid fa-wallet" style="color: white;"></i>&nbsp; &nbsp;My Loans</a></li>
-                    <li><a href=""><i class="fa-solid fa-circle-plus" style="color: white"></i>&nbsp; &nbsp;Add Transaction</a></li>
+                    <li id="transBtn"><a href=""><i class="fa-solid fa-circle-plus" style="color: white"></i>&nbsp; &nbsp;Add Transaction</a></li>
                     <li><a href="#history"><i class="fa-solid fa-circle-plus" style="color: white;"></i>&nbsp;&nbsp;Transaction History</a></li>
                     <li><a href=""><i class="fa-solid fa-gear" style="color: white;"></i>&nbsp; &nbsp;Settings</a></li>
-                    <li><a href=""><i class="fa-solid fa-right-from-bracket" style="color: white;"></i>&nbsp;&nbsp;Logout</a></li>
+                    <li id="logout"><a href=""><i class="fa-solid fa-right-from-bracket" style="color: white;"></i>&nbsp;&nbsp;Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -49,7 +50,7 @@
         <div class="container">
 
             <div class="welcome">
-                <h1>Welcome to dashboard, Hafiz</h1>
+                <h1 id="welcome">Welcome to dashboard, Hafiz</h1>
                 <p>Manage your banking activities, monitor your loans, and keep track of every transaction from one
                     place.</p>
             </div>
@@ -57,17 +58,17 @@
             <div class="cards">
                 <div class="c1">
                     <h3><i class="fa-solid fa-wallet" style="color: #0c5930;"></i>&nbsp;&nbsp;Total Balance</h3>
-                    <h2>Rs. 1000</h2>
+                    <h2 id="tbalance">Rs. 700</h2>
                 </div>
 
                 <div class="c2">
                     <h3><i class="fa-solid fa-arrow-trend-up" style="color: #0c5930;"></i>&nbsp;&nbsp;Total Credit</h3>
-                    <h2>Rs. 1000</h2>
+                    <h2 id="tcredit">Rs. 10</h2>
                 </div>
 
                 <div class="c3">
                     <h3><i class="fa-solid fa-arrow-trend-down" style="color: #0c5930;"></i>&nbsp;&nbsp;Total Debit</h3>
-                    <h2>Rs. 1000</h2>
+                    <h2 id="tdebit">Rs. 100</h2>
                 </div>
             </div>
 
@@ -123,20 +124,13 @@
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id="body">
                         <tr>
-                            <td>a</td>
-                            <td>a</td>
-                            <td>a</td>
-                            <td>a</td>
-                            <td>a</td>
-                        </tr>
-                        <tr>
-                            <td>b</td>
-                            <td>b</td>
-                            <td>b</td>
-                            <td>b</td>
-                            <td>b</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -146,14 +140,14 @@
 
 
 
-    <div class="popup-overlay">
+    <div class="popup-overlay" id="popup">
         <div class="popup-box">
             <div class="head">
                 <h1>Add Transaction</h1>
-                <p><i class="fa-regular fa-circle-xmark"></i></p>
+                <p><i class="fa-regular fa-circle-xmark" id="cross"></i></p>
             </div>
 
-            <form action="">
+            <form action="#" id="dataForm">
                 <div class="dt">
                     <label for="amount">Amount</label>
                     <input type="number" name="amount" id="amount" placeholder="Enter amount" required>
@@ -170,30 +164,18 @@
                     <input type="radio" name="trans" id="debit" value="debit">
                     <label for="debit">Debit</label>
                 </div>
+
+                <div class="btn">
+                    <button id="cancel">Cancel</button>
+                    <button id="save">Save Transaction</button>
+                </div>
             </form>
 
-            <div class="btn">
-                <button id="cancel">Cancel</button>
-                <button id="save">Save Transaction</button>
-            </div>
         </div>
     </div>
 
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-    </script>
+    <script type="module" src="../js/dashboard.js"></script>
 </body>
 
 </html>

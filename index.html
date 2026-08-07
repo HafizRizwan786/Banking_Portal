@@ -33,8 +33,8 @@
                 </ul>
 
                 <div class="nav-buttons">
-                    <button class="login-btn">Login</button>
-                    <button class="signup-btn">Sign Up</button>
+                    <button type="button" class="login-btn" id="login">Login</button>
+                    <button type="button" class="signup-btn" id="signup">Sign Up</button>
                 </div>
             </nav>
         </div>
@@ -49,7 +49,7 @@
                 <p>Our simple banking portal offers a fast, secure, and intuitive way to manage your money in real time.
                     Effortlessly track your balance, view transaction history, and send instant payments with total
                     peace of mind.</p>
-                <button class="get-started-btn">Get Started</button>
+                <button class="get-started-btn" id="start">Get Started</button>
             </div>
         </section>
 
@@ -137,22 +137,7 @@
         </div>
     </footer>
 
-
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking any nav link
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-    </script>
+    <script type="module" src="./assets/js/app.js"></script>
 </body>
 
 </html>
